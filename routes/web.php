@@ -11,6 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'FormController@index');
+
+Route::post('/pdf', 'FormController@store');
