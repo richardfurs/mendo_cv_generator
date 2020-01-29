@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Barryvdh\DomPDF\PDF as PDF;
+use Illuminate\Support\Facades\App;
+use PDF;
 
 class FormController extends Controller
 {
@@ -44,21 +45,25 @@ class FormController extends Controller
 //            'email' => 'required|email',
 //            'image' => 'required'
 //        ]);
-//dd($requestData);
-        $request->image->store('img');
-//        $requestData['imgHash'] = $request->image->hashName();
+
+        $request->image->store('public');
+
+        $imgHash = $request->image->hashName();
+        $appUrl = App::make('url')->to('/');
+        $imgUrl = $appUrl . '/storage/' . $imgHash;
+
+        $requestData['imgUrl'] = $imgUrl;
 
         return $this->pdf($requestData);
     }
 
     function pdf($requestData)
     {
-        $pdf = \App::make('dompdf.wrapper');
-        $pdf->loadHTML(
-            view('pdf')->with('requestData', $requestData)->render()
-        );
+        $data = [
+            'requestData' => $requestData
+        ];
 
-        return $pdf->stream();
+        return PDF::loadView('pdf', $data)->stream();
     }
 
     /**

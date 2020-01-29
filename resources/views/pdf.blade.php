@@ -11,8 +11,8 @@
 <body>
 <h1 align="center">CV</h1>
 <p>Pamatinformācija</p>
-{{--<img src="{{storage_path()}}/app/img/{{$requestData['imgHash']}}">--}}
-<img src="storage\app\img\NLbKWr2oJrnxzff7pWH7QOEsy2OXHbqsCjMm5kx2.jpeg">
+<img src="{{$requestData['imgUrl']}}"/>
+
 <table width="100%" style="border-collapse: collapse; border: 0px;">
     <tr>
         <th style="border: 1px solid; padding:12px;" width="20%">Name</th>
@@ -26,7 +26,8 @@
         <td style="border: 1px solid; padding:12px;">{{$requestData['birth_date']}}</td>
         <td style="border: 1px solid; padding:12px;">{{$requestData['email']}}</td>
 
-        @for($i = 0; $i <= $requestData['counter']; $i++)
+
+        @for($i = 0; $i <= $requestData['edj_counter']; $i++)
             <td style="border: 1px solid; padding:12px;">{{$requestData['edj_name'.$i]}}</td>
             <td style="border: 1px solid; padding:12px;">{{$requestData['edj_year_from'.$i]}}</td>
             <td style="border: 1px solid; padding:12px;">{{$requestData['edj_year_to'.$i]}}</td>

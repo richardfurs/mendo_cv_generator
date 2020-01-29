@@ -14,6 +14,9 @@
         .button-remove {
             padding: 0px 15px 0 14px;
         }
+        .hidden {
+            display: none;
+        }
     </style>
     <title>CV Generator</title>
 </head>
@@ -51,7 +54,7 @@
         <div id="append-edj"></div>
 
         <input id="add-edj" type="button" class="btn btn-primary btn-block" value="Pievienot Izglītības Iestādi">
-        <input id="remove-edj" type="button" class="btn btn-danger btn-block" value="Noņemt Izglītības Iestādi">
+        <input id="remove-edj" type="button" class=" hidden btn btn-danger btn-block" value="Noņemt Izglītības Iestādi">
 
 
 {{--        VALODU ZINĀŠANAS--}}
@@ -191,19 +194,6 @@
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>
-
-<script type="text/javascript">
-    let endYear = new Date(new Date().getFullYear(), 11, 31);
-
-    $(function () {
-        $(".datepicker-y").datepicker({
-            format: "yyyy",
-            viewMode: "years",
-            minViewMode: "years",
-            endDate: endYear
-        });
-    });
-</script>
 
 <script type="text/javascript" src="{{asset('js/script.js')}}"></script>
 
