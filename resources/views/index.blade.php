@@ -1,6 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html lang="en">
 <head>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
@@ -11,9 +12,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.js"></script>
 
     <style>
-        .button-remove {
-            padding: 0px 15px 0 14px;
-        }
         .hidden {
             display: none;
         }
@@ -23,35 +21,50 @@
 <body>
 <div class="container">
     <h1>CV Ģenerēšanas Forma</h1>
-    <form action="/pdf" method="post" enctype="multipart/form-data">
+    <form id="form"  method="post" id="form" enctype="multipart/form-data">
 
         {!! csrf_field() !!}
 
         <div class="form-group">
             <label for="name">Vārds</label>
-            <input name="name" class="form-control" id="name">
-            {!! $errors->first('name', '<p class="alert-danger">:message</p>') !!}
+            <input name="name" class="form-control" id="name" value="{{ old('name') }}">
         </div>
         <div class="form-group">
             <label for="name">Uzvārds</label>
-            <input name="surname" class="form-control" id="surname">
-            {!! $errors->first('surname', '<p class="alert-danger">:message</p>') !!}
+            <input name="surname" class="form-control" id="surname" value="{{ old('surname') }}">
         </div>
         <div class="form-group">
             <label for="birth-date">Dzimšanas datums</label>
-            <input name="birth_date" class="form-control datepicker" id="birth-date" data-date-end-date="0d">
-            {!! $errors->first('birth_date', '<p class="alert-danger">:message</p>') !!}
+            <input name="birth_date" class="form-control datepicker" id="birth-date" value="{{ old('birth_date') }}" data-date-end-date="0d">
         </div>
         <div class="form-group">
             <label for="email">E-pasts</label>
-            <input name="email" class="form-control" id="email">
-            {!! $errors->first('email', '<p class="alert-danger">:message</p>') !!}
+            <input name="email" class="form-control" id="email" value="{{ old('name') }}">
         </div>
 
 {{--        IZGLĪTĪBAS IESTĀDES--}}
         <h5 class="text-center">Izglītības iestādes</h5>
 
-        <div id="append-edj"></div>
+        <div id="append-edj">
+            <div class="row text-center edj-row" id="edj-row">
+                <div class="col-sm">
+                    <input type="text" placeholder="Iestādes nosaukums" name="edj_name[]" class="form-control edj-name">
+                </div>
+                <div class="col-sm">
+                    <div class="input-group">
+                        <input placeholder="gads no" name="edj_year_from[]" type="text" class="form-control edj-y-from datepicker-y">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">-</span>
+                        </div>
+                        <input placeholder="gads līdz" name="edj_year_to[]" type="text" class="form-control edj-y-to datepicker-y">
+                    </div>
+                </div>
+                <div class="col-sm">
+                    <input placeholder="Specialitāte" type="text" name="edj_spec[]" class="edj-spec form-control">
+                </div>
+             </div>
+        </div>
+        <div id="edj-error" class="alert-danger"></div>
 
         <input id="add-edj" type="button" class="btn btn-primary btn-block" value="Pievienot Izglītības Iestādi">
         <input id="remove-edj" type="button" class=" hidden btn btn-danger btn-block" value="Noņemt Izglītības Iestādi">
@@ -188,13 +201,13 @@
 
         <div class="custom-file">
             <input name="image" type="file">
-            {!! $errors->first('image', '<p class="alert-danger">:message</p>') !!}
         </div>
 
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary" id="submit">Submit</button>
     </form>
 </div>
 
+<script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.17.0/jquery.validate.js"></script>
 <script type="text/javascript" src="{{asset('js/script.js')}}"></script>
 
 </body>

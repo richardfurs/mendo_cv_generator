@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Rules\EdjucationRow;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Storage;
 use PDF;
 
 class FormController extends Controller
@@ -31,39 +33,34 @@ class FormController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
+     * @throws \Throwable
      */
     public function store(Request $request)
     {
         $requestData = $request->all();
 
-//        $this->validate($request, [
-//            'name' => 'required',
-//            'surname' => 'required',
-//            'birth_date' => 'required',
-//            'email' => 'required|email',
-//            'image' => 'required'
-//        ]);
+        $appUrl = App::make('url')->to('/');
 
         $request->image->store('public');
-
         $imgHash = $request->image->hashName();
-        $appUrl = App::make('url')->to('/');
         $imgUrl = $appUrl . '/storage/' . $imgHash;
-
         $requestData['imgUrl'] = $imgUrl;
 
-        return $this->pdf($requestData);
-    }
+        $pdfNameToTrim = $requestData['name'].'_'.$requestData['surname'].'.pdf';
+        $pdfName = str_replace(' ', '', $pdfNameToTrim);
+        $pdfUrl = $appUrl . '/storage/pdf/' . $pdfName;
+        $requestData['pdfUrl'] = $pdfUrl;
 
-    function pdf($requestData)
-    {
         $data = [
             'requestData' => $requestData
         ];
+        $pdf = PDF::loadView('pdf', $data);
+        Storage::put('public/pdf/'.$pdfName, $pdf->output());
 
-        return PDF::loadView('pdf', $data)->stream();
+        return response()->json(['success' => $requestData]);
+
     }
 
     /**

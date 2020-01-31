@@ -12,7 +12,7 @@
 <h1 align="center">CV</h1>
 <p>Pamatinformācija</p>
 <img src="{{$requestData['imgUrl']}}"/>
-
+{{$requestData['name']}}
 <table width="100%" style="border-collapse: collapse; border: 0px;">
     <tr>
         <th style="border: 1px solid; padding:12px;" width="20%">Name</th>
@@ -20,20 +20,20 @@
         <th style="border: 1px solid; padding:12px;" width="15%">Date of birth</th>
         <th style="border: 1px solid; padding:12px;" width="15%">Email</th>
     </tr>
-    <tr>
-        <td style="border: 1px solid; padding:12px;">{{$requestData['name']}}</td>
-        <td style="border: 1px solid; padding:12px;">{{$requestData['surname']}}</td>
-        <td style="border: 1px solid; padding:12px;">{{$requestData['birth_date']}}</td>
-        <td style="border: 1px solid; padding:12px;">{{$requestData['email']}}</td>
+{{--    <tr>--}}
+{{--        <td style="border: 1px solid; padding:12px;">{{$requestData['name']}}</td>--}}
+{{--        <td style="border: 1px solid; padding:12px;">{{$requestData['surname']}}</td>--}}
+{{--        <td style="border: 1px solid; padding:12px;">{{$requestData['birth_date']}}</td>--}}
+{{--        <td style="border: 1px solid; padding:12px;">{{$requestData['email']}}</td>--}}
 
 
-        @for($i = 0; $i <= $requestData['edj_counter']; $i++)
-            <td style="border: 1px solid; padding:12px;">{{$requestData['edj_name'.$i]}}</td>
-            <td style="border: 1px solid; padding:12px;">{{$requestData['edj_year_from'.$i]}}</td>
-            <td style="border: 1px solid; padding:12px;">{{$requestData['edj_year_to'.$i]}}</td>
-            <td style="border: 1px solid; padding:12px;">{{$requestData['edj_spec'.$i]}}</td>
-        @endfor
-    </tr>
+{{--        @for($i = 0; $i <= $requestData['edj_counter']; $i++)--}}
+{{--            <td style="border: 1px solid; padding:12px;">{{$requestData['edj_name'.$i]}}</td>--}}
+{{--            <td style="border: 1px solid; padding:12px;">{{$requestData['edj_year_from'.$i]}}</td>--}}
+{{--            <td style="border: 1px solid; padding:12px;">{{$requestData['edj_year_to'.$i]}}</td>--}}
+{{--            <td style="border: 1px solid; padding:12px;">{{$requestData['edj_spec'.$i]}}</td>--}}
+{{--        @endfor--}}
+{{--    </tr>--}}
 
 </table>
 </body>
