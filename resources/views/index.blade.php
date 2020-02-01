@@ -11,11 +11,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.js"></script>
 
-    <style>
-        .hidden {
-            display: none;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
+
     <title>CV Generator</title>
 </head>
 <body>
@@ -66,7 +63,7 @@
         </div>
         <div id="edj-error" class="alert-danger"></div>
 
-        <input id="add-edj" type="button" class="btn btn-primary btn-block" value="Pievienot Izglītības Iestādi">
+        <input id="add-edj" type="button" class="btn btn-light btn-block" value="Pievienot Izglītības Iestādi">
         <input id="remove-edj" type="button" class=" hidden btn btn-danger btn-block" value="Noņemt Izglītības Iestādi">
 
 
@@ -87,123 +84,133 @@
             </div>
         </div>
 
-{{--        ANGĻU VALODA--}}
-        <div class="row text-center">
-            <div class="col-sm">
-                Angļu
+        <div id="lang-append">
+            {{--        ANGĻU VALODA--}}
+            <div id="lang-row-clone" class="row text-center lang-row">
+                <div class="col-sm">
+                    Angļu
+                    <input name="lang_name[]" type="hidden" value="Angļu" class="lang-name">
+                </div>
+                <div class="col-sm">
+                    <select name="lang_speech[]" class="form-control lang-speech">
+                        <option disabled selected>Izvēlieties līmeni</option>
+                        <option>Pamatzināšanas</option>
+                        <option>Vidēji</option>
+                        <option>Labi</option>
+                        <option>Teicami</option>
+                        <option>Dzimtā Valoda</option>
+                    </select>
+                </div>
+                <div class="col-sm">
+                    <select name="lang_read[]" class="form-control lang-read">
+                        <option disabled selected>Izvēlieties līmeni</option>
+                        <option>Pamatzināšanas</option>
+                        <option>Vidēji</option>
+                        <option>Labi</option>
+                        <option>Teicami</option>
+                        <option>Dzimtā Valoda</option>
+                    </select>
+                </div>
+                <div class="col-sm">
+                    <select name="lang_write[]" class="form-control lang-write">
+                        <option disabled selected>Izvēlieties līmeni</option>
+                        <option>Pamatzināšanas</option>
+                        <option>Vidēji</option>
+                        <option>Labi</option>
+                        <option>Teicami</option>
+                        <option>Dzimtā Valoda</option>
+                    </select>
+                </div>
             </div>
-            <div class="col-sm">
-                <select class="form-control">
-                    <option disabled selected>Izvēlieties līmeni</option>
-                    <option>Pamatzināšanas</option>
-                    <option>Vidēji</option>
-                    <option>Labi</option>
-                    <option>Teicami</option>
-                    <option>Dzimtā Valoda</option>
-                </select>
-            </div>
-            <div class="col-sm">
-                <select class="form-control">
-                    <option disabled selected>Izvēlieties līmeni</option>
-                    <option>Pamatzināšanas</option>
-                    <option>Vidēji</option>
-                    <option>Labi</option>
-                    <option>Teicami</option>
-                    <option>Dzimtā Valoda</option>
-                </select>
-            </div>
-            <div class="col-sm">
-                <select class="form-control">
-                    <option disabled selected>Izvēlieties līmeni</option>
-                    <option>Pamatzināšanas</option>
-                    <option>Vidēji</option>
-                    <option>Labi</option>
-                    <option>Teicami</option>
-                    <option>Dzimtā Valoda</option>
-                </select>
-            </div>
-        </div>
 
-{{--        LATVIEŠU VALODA--}}
-        <div class="row text-center">
-            <div class="col-sm">
-                Latviešu
+            {{--        LATVIEŠU VALODA--}}
+            <div class="row text-center lang-row">
+                <div class="col-sm">
+                    Latviešu
+                    <input name="lang_name[]" type="hidden" value="Latviešu" class="lang-name">
+                </div>
+                <div class="col-sm">
+                    <select name="lang_speech[]" class="form-control lang-speech">
+                        <option disabled selected>Izvēlieties līmeni</option>
+                        <option>Pamatzināšanas</option>
+                        <option>Vidēji</option>
+                        <option>Labi</option>
+                        <option>Teicami</option>
+                        <option>Dzimtā Valoda</option>
+                    </select>
+                </div>
+                <div class="col-sm">
+                    <select name="lang_read[]" class="form-control lang-read">
+                        <option disabled selected>Izvēlieties līmeni</option>
+                        <option>Pamatzināšanas</option>
+                        <option>Vidēji</option>
+                        <option>Labi</option>
+                        <option>Teicami</option>
+                        <option>Dzimtā Valoda</option>
+                    </select>
+                </div>
+                <div class="col-sm">
+                    <select name="lang_write[]" class="form-control lang-write">
+                        <option disabled selected>Izvēlieties līmeni</option>
+                        <option>Pamatzināšanas</option>
+                        <option>Vidēji</option>
+                        <option>Labi</option>
+                        <option>Teicami</option>
+                        <option>Dzimtā Valoda</option>
+                    </select>
+                </div>
             </div>
-            <div class="col-sm">
-                <select class="form-control">
-                    <option disabled selected>Izvēlieties līmeni</option>
-                    <option>Pamatzināšanas</option>
-                    <option>Vidēji</option>
-                    <option>Labi</option>
-                    <option>Teicami</option>
-                    <option>Dzimtā Valoda</option>
-                </select>
-            </div>
-            <div class="col-sm">
-                <select class="form-control">
-                    <option disabled selected>Izvēlieties līmeni</option>
-                    <option>Pamatzināšanas</option>
-                    <option>Vidēji</option>
-                    <option>Labi</option>
-                    <option>Teicami</option>
-                    <option>Dzimtā Valoda</option>
-                </select>
-            </div>
-            <div class="col-sm">
-                <select class="form-control">
-                    <option disabled selected>Izvēlieties līmeni</option>
-                    <option>Pamatzināšanas</option>
-                    <option>Vidēji</option>
-                    <option>Labi</option>
-                    <option>Teicami</option>
-                    <option>Dzimtā Valoda</option>
-                </select>
-            </div>
-        </div>
 
-{{--        KRIEVU VALODA--}}
-        <div class="row text-center">
-            <div class="col-sm">
-                Krievu
-            </div>
-            <div class="col-sm">
-                <select class="form-control">
-                    <option disabled selected>Izvēlieties līmeni</option>
-                    <option>Pamatzināšanas</option>
-                    <option>Vidēji</option>
-                    <option>Labi</option>
-                    <option>Teicami</option>
-                    <option>Dzimtā Valoda</option>
-                </select>
-            </div>
-            <div class="col-sm">
-                <select class="form-control">
-                    <option disabled selected>Izvēlieties līmeni</option>
-                    <option>Pamatzināšanas</option>
-                    <option>Vidēji</option>
-                    <option>Labi</option>
-                    <option>Teicami</option>
-                    <option>Dzimtā Valoda</option>
-                </select>
-            </div>
-            <div class="col-sm">
-                <select class="form-control">
-                    <option disabled selected>Izvēlieties līmeni</option>
-                    <option>Pamatzināšanas</option>
-                    <option>Vidēji</option>
-                    <option>Labi</option>
-                    <option>Teicami</option>
-                    <option>Dzimtā Valoda</option>
-                </select>
+            {{--        KRIEVU VALODA--}}
+            <div class="row text-center lang-row">
+                <div class="col-sm">
+                    Krievu
+                    <input name="lang_name[]" type="hidden" value="Krievu" class="lang-name">
+                </div>
+                <div class="col-sm">
+                    <select name="lang_speech[]" class="form-control lang-speech">
+                        <option disabled selected>Izvēlieties līmeni</option>
+                        <option>Pamatzināšanas</option>
+                        <option>Vidēji</option>
+                        <option>Labi</option>
+                        <option>Teicami</option>
+                        <option>Dzimtā Valoda</option>
+                    </select>
+                </div>
+                <div class="col-sm">
+                    <select name="lang_read[]" class="form-control lang-read">
+                        <option disabled selected>Izvēlieties līmeni</option>
+                        <option>Pamatzināšanas</option>
+                        <option>Vidēji</option>
+                        <option>Labi</option>
+                        <option>Teicami</option>
+                        <option>Dzimtā Valoda</option>
+                    </select>
+                </div>
+                <div class="col-sm">
+                    <select name="lang_write[]" class="form-control lang-write">
+                        <option disabled selected>Izvēlieties līmeni</option>
+                        <option>Pamatzināšanas</option>
+                        <option>Vidēji</option>
+                        <option>Labi</option>
+                        <option>Teicami</option>
+                        <option>Dzimtā Valoda</option>
+                    </select>
+                </div>
             </div>
         </div>
+        <div id="lang-error" class="alert-danger"></div>
+
         <input id="add-lang" type="button" class="btn btn-light btn-block" value="Pievienot Valodu">
 
+        <input id="remove-lang" type="button" class="hidden btn btn-danger btn-block" value="Noņemt Valodu">
+
         <div class="custom-file">
-            <input name="image" type="file">
+            <h5>Pievienot attēlu</h5>
+            <input name="image" type="file" class="image-input">
         </div>
 
-        <button type="submit" class="btn btn-primary" id="submit">Submit</button>
+        <button type="submit" class="btn btn-primary btn-block" id="submit">Iesniegt</button>
     </form>
 </div>
 

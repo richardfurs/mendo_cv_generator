@@ -14,6 +14,7 @@ $(document).ready(function () {
     });
 
 
+    // ADD EDUCATION ROW
     $('#add-edj').click(function () {
 
         $('#edj-row').clone().appendTo($('#append-edj')).find('input[type="text"]').val('');
@@ -31,6 +32,7 @@ $(document).ready(function () {
 
     });
 
+    // REMOVE EDUCATION ROW
     $('#remove-edj').click(function () {
         let edjRowArray = $('.edj-row');
         let lastEdjRowElem = edjRowArray[edjRowArray.length - 1];
@@ -42,6 +44,29 @@ $(document).ready(function () {
         }
     });
 
+    // ADD LANGUAGE ROW
+    $('#add-lang').click(function () {
+        let langRow = $('#lang-row-clone').clone()
+        langRow.children(':first').html(
+            '<input type="text" placeholder="Norādiet valodu" name="lang_name[]" class="form-control lang-name">'
+        )
+        langRow.appendTo($('#lang-append'))
+        $('#remove-lang').removeClass('hidden');
+    })
+
+    // REMOVE LANGUAGE ROW
+    $('#remove-lang').click(function () {
+        let langRowArray = $('.lang-row')
+        let lastLangRowElem = langRowArray[langRowArray.length - 1]
+
+        lastLangRowElem.remove()
+
+        if(langRowArray.length - 1 < 4) {
+            $('#remove-lang').addClass('hidden');
+        }
+    })
+
+    // VALIDATE SIMPLE INPUTS
     // $('#form').validate({
     //     rules: {
     //         name: 'required',
@@ -72,6 +97,7 @@ $(document).ready(function () {
     $('#form').submit(function (e) {
         e.preventDefault()
 
+        // // VALIDATE EDUCATION INFO
         // let edjInputArr = [
         //     $('.edj-name'), $('.edj-y-from'), $('.edj-y-to'), $('.edj-spec')
         // ]
@@ -79,7 +105,6 @@ $(document).ready(function () {
         // let returnFunc = false
         //
         // let edjErrMsg = $('<p id="edj-err-msg">Lūdzu ievadiet visus izglītības datus!</p>')
-        // let langErrMsg = $('<p id="edj-err-msg">Lūdzu aizpildiet visus valodu datus!</p>')
         //
         // let showEdjError = function() {
         //     $('#edj-err-msg').remove()
@@ -94,6 +119,28 @@ $(document).ready(function () {
         //         }
         //     })
         // })
+        //
+        // // VALIDATE LANGUAGE INFO
+        // let langInputArr = [
+        //     $('.lang-name'), $('.lang-speech'), $('.lang-read'), $('.lang-write')
+        // ]
+        //
+        // let langErrMsg = $('<p id="lang-err-msg">Lūdzu aizpildiet visus valodu datus!</p>')
+        //
+        // let showLangError = function() {
+        //     $('#lang-err-msg').remove()
+        //     langErrMsg.appendTo('#lang-error')
+        //     returnFunc = true;
+        // }
+        //
+        // $.each(langInputArr, function () {
+        //     $(this).each(function () {
+        //         if($(this).val() === null || $(this).val() === '') {
+        //             showLangError()
+        //         }
+        //     })
+        // })
+        //
         //
         // if(returnFunc)return;
 

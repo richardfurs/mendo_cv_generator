@@ -2,40 +2,67 @@
 <html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-    <style>
-        /*body { font-family: DejaVu Serif, sans-serif; }*/
-        body { font-family: DejaVu Sans;}
+
+    <style type="text/css" media="all">
+        body {
+            /*font-family: 'Roboto', sans-serif;*/
+            font-family: DejaVu Sans;
+        }
+
+        h4::after {
+            content: '';
+            display: block;
+            height: 8px;
+            background: lightgray;
+        }
+
+        .main-info p {
+            margin: 0;
+        }
+
+        .info-alias {
+            text-align: end;
+        }
     </style>
     <title>Document</title>
 </head>
 <body>
-<h1 align="center">CV</h1>
-<p>Pamatinformācija</p>
-<img src="{{$requestData['imgUrl']}}"/>
-{{$requestData['name']}}
-<table width="100%" style="border-collapse: collapse; border: 0px;">
-    <tr>
-        <th style="border: 1px solid; padding:12px;" width="20%">Name</th>
-        <th style="border: 1px solid; padding:12px;" width="30%">Surname</th>
-        <th style="border: 1px solid; padding:12px;" width="15%">Date of birth</th>
-        <th style="border: 1px solid; padding:12px;" width="15%">Email</th>
-    </tr>
-{{--    <tr>--}}
-{{--        <td style="border: 1px solid; padding:12px;">{{$requestData['name']}}</td>--}}
-{{--        <td style="border: 1px solid; padding:12px;">{{$requestData['surname']}}</td>--}}
-{{--        <td style="border: 1px solid; padding:12px;">{{$requestData['birth_date']}}</td>--}}
-{{--        <td style="border: 1px solid; padding:12px;">{{$requestData['email']}}</td>--}}
+    <h1 align="center">CV</h1>
+    <h4>Pamatinformācija</h4>
+
+    <div class="main-info">
+{{--        <img src="{{$requestData['imgUrl']}}"/>--}}
+{{--        <img src=""/>--}}
+        <div class="d-flex">
+            <div class="info-alias">
+                <p>Vārds, uzvārds:</p>
+                <p>Dzimšanas datums:</p>
+                <p>E-pasta adrese:</p>
+            </div>
+            <div class="info-data">
+                <p>Ricards Furs</p>
+                <p>06.03.1988</p>
+                <p>epasts@epasts.lv</p>
+            </div>
+        </div>
+
+    </div>
+
+    <h4>Iemaņas un zināšanas</h4>
+    <hr>
 
 
-{{--        @for($i = 0; $i <= $requestData['edj_counter']; $i++)--}}
-{{--            <td style="border: 1px solid; padding:12px;">{{$requestData['edj_name'.$i]}}</td>--}}
-{{--            <td style="border: 1px solid; padding:12px;">{{$requestData['edj_year_from'.$i]}}</td>--}}
-{{--            <td style="border: 1px solid; padding:12px;">{{$requestData['edj_year_to'.$i]}}</td>--}}
-{{--            <td style="border: 1px solid; padding:12px;">{{$requestData['edj_spec'.$i]}}</td>--}}
-{{--        @endfor--}}
-{{--    </tr>--}}
 
-</table>
+
+
+
+
+
+
+
+{{--<img src="{{$requestData['imgUrl']}}"/>--}}
+{{--{{$requestData['name']}}--}}
+
 </body>
 </html>
 

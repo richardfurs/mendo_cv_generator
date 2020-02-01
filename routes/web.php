@@ -14,3 +14,6 @@
 Route::get('/', 'FormController@index');
 
 Route::post('/pdf', 'FormController@store');
+//Route::get('pdf', function () {
+//    return view('pdf');
+//});

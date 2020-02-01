@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Rules\EdjucationRow;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Storage;
@@ -43,16 +42,19 @@ class FormController extends Controller
 
         $appUrl = App::make('url')->to('/');
 
-        $request->image->store('public');
-        $imgHash = $request->image->hashName();
-        $imgUrl = $appUrl . '/storage/' . $imgHash;
-        $requestData['imgUrl'] = $imgUrl;
+//        STORE IMAGE AND MAKE IMAGE URL
+//        $request->image->store('public');
+//        $imgHash = $request->image->hashName();
+//        $imgUrl = $appUrl . '/storage/' . $imgHash;
+//        $requestData['imgUrl'] = $imgUrl;
 
+//        MAKE PDF FILE NAME AND URL
         $pdfNameToTrim = $requestData['name'].'_'.$requestData['surname'].'.pdf';
         $pdfName = str_replace(' ', '', $pdfNameToTrim);
         $pdfUrl = $appUrl . '/storage/pdf/' . $pdfName;
         $requestData['pdfUrl'] = $pdfUrl;
 
+//        LOAD AND STORE PDF FILE
         $data = [
             'requestData' => $requestData
         ];
