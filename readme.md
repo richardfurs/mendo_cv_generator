@@ -14,6 +14,10 @@ Create storage symlink:
 ```
 $ php artisan storage:link
 ```
+Run migration
+```
+$ php artisan migrate
+```
 Run application
 ```
 $ php artisan serve
