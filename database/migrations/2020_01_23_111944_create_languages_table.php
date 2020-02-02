@@ -14,7 +14,12 @@ class CreateLanguagesTable extends Migration
     public function up()
     {
         Schema::create('languages', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('lang_id');
+            $table->string('lang_name');
+            $table->string('lang_speech');
+            $table->string('lang_read');
+            $table->string('lang_write');
+            $table->integer('user_id');
             $table->timestamps();
         });
     }

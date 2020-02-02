@@ -1,7 +1,9 @@
 $(document).ready(function () {
 
     $(function () {
-        $('.datepicker').datepicker();
+        $('.datepicker').datepicker({
+            format: 'yyyy/mm/dd',
+        });
     });
 
     let endYear = new Date(new Date().getFullYear(), 11, 31);
@@ -66,84 +68,93 @@ $(document).ready(function () {
         }
     })
 
-    // VALIDATE SIMPLE INPUTS
-    // $('#form').validate({
-    //     rules: {
-    //         name: 'required',
-    //         surname: 'required',
-    //         birth_date: 'required',
-    //         email: {
-    //             required: true,
-    //             email: true
-    //         }
-    //     },
-    //     messages: {
-    //         name: {
-    //             required: '<p class="alert-danger">Lūdzu ievadiet vārdu!</p>'
-    //         },
-    //         surname: {
-    //             required: '<p class="alert-danger">Lūdzu ievadiet uzvārdu!</p>'
-    //         },
-    //         birth_date: {
-    //             required: '<p class="alert-danger">Lūdzu ievadiet dzimšanas datumu!</p>'
-    //         },
-    //         email: {
-    //             required: '<p class="alert-danger">Lūdzu ievadiet e-pastu!</p>',
-    //             email: '<p class="alert-danger">Lūdzu ievadiet derīgu e-pasta adresi!</p>'
-    //         }
-    //     }
-    // })
+    // VALIDATE USER DATA
+    $('#form').validate({
+        rules: {
+            name: 'required',
+            surname: 'required',
+            birth_date: 'required',
+            email: {
+                required: true,
+                email: true
+            },
+            image: {
+                required: true
+            }
+        },
+        messages: {
+            name: {
+                required: '<p class="alert-danger">Lūdzu ievadiet vārdu!</p>'
+            },
+            surname: {
+                required: '<p class="alert-danger">Lūdzu ievadiet uzvārdu!</p>'
+            },
+            birth_date: {
+                required: '<p class="alert-danger">Lūdzu ievadiet dzimšanas datumu!</p>'
+            },
+            email: {
+                required: '<p class="alert-danger">Lūdzu ievadiet e-pastu!</p>',
+                email: '<p class="alert-danger">Lūdzu ievadiet derīgu e-pasta adresi!</p>'
+            },
+            image: {
+                required: '<p class="alert-danger">Lūdzu pievienojiet attēlu!</p>'
+            }
+        }
+    })
 
     $('#form').submit(function (e) {
         e.preventDefault()
 
-        // // VALIDATE EDUCATION INFO
-        // let edjInputArr = [
-        //     $('.edj-name'), $('.edj-y-from'), $('.edj-y-to'), $('.edj-spec')
-        // ]
-        //
-        // let returnFunc = false
-        //
-        // let edjErrMsg = $('<p id="edj-err-msg">Lūdzu ievadiet visus izglītības datus!</p>')
-        //
-        // let showEdjError = function() {
-        //     $('#edj-err-msg').remove()
-        //     edjErrMsg.appendTo('#edj-error')
-        //     returnFunc = true;
-        // }
-        //
-        // $.each(edjInputArr, function () {
-        //     $(this).each(function () {
-        //         if($(this).val() === '') {
-        //             showEdjError()
-        //         }
-        //     })
-        // })
-        //
-        // // VALIDATE LANGUAGE INFO
-        // let langInputArr = [
-        //     $('.lang-name'), $('.lang-speech'), $('.lang-read'), $('.lang-write')
-        // ]
-        //
-        // let langErrMsg = $('<p id="lang-err-msg">Lūdzu aizpildiet visus valodu datus!</p>')
-        //
-        // let showLangError = function() {
-        //     $('#lang-err-msg').remove()
-        //     langErrMsg.appendTo('#lang-error')
-        //     returnFunc = true;
-        // }
-        //
-        // $.each(langInputArr, function () {
-        //     $(this).each(function () {
-        //         if($(this).val() === null || $(this).val() === '') {
-        //             showLangError()
-        //         }
-        //     })
-        // })
-        //
-        //
-        // if(returnFunc)return;
+        // VALIDATE EDUCATION INFO
+        let edjInputArr = [
+            $('.edj-name'), $('.edj-y-from'), $('.edj-y-to'), $('.edj-spec')
+        ]
 
+        let returnFunc = false
+
+        let edjErrMsg = $('<p id="edj-err-msg">Lūdzu ievadiet visus izglītības datus!</p>')
+
+        $('#edj-err-msg').remove()
+
+        let showEdjError = function() {
+            edjErrMsg.appendTo('#edj-error')
+            returnFunc = true;
+        }
+
+        $.each(edjInputArr, function () {
+            $(this).each(function () {
+                if($(this).val() === '') {
+                    showEdjError()
+                }
+            })
+        })
+
+        // VALIDATE LANGUAGE INFO
+        let langInputArr = [
+            $('.lang-name'), $('.lang-speech'), $('.lang-read'), $('.lang-write')
+        ]
+
+        let langErrMsg = $('<p id="lang-err-msg">Lūdzu aizpildiet visus valodu datus!</p>')
+
+        $('#lang-err-msg').remove()
+
+        let showLangError = function() {
+            langErrMsg.appendTo('#lang-error')
+            returnFunc = true;
+        }
+
+        $.each(langInputArr, function () {
+            $(this).each(function () {
+                if($(this).val() === null || $(this).val() === '') {
+                    showLangError()
+                }
+            })
+        })
+
+
+        if(returnFunc)return;
+
+        // CREATE REQUEST
         let formData = new FormData(this);
 
         $.ajaxSetup({

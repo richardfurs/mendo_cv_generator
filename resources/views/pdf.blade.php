@@ -2,66 +2,75 @@
 <html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-    <style type="text/css" media="all">
-        body {
-            /*font-family: 'Roboto', sans-serif;*/
-            font-family: DejaVu Sans;
-        }
+    <link rel="stylesheet" type="text/css" href="{{asset('css/pdf.css')}}">
 
-        h4::after {
-            content: '';
-            display: block;
-            height: 8px;
-            background: lightgray;
-        }
-
-        .main-info p {
-            margin: 0;
-        }
-
-        .info-alias {
-            text-align: end;
-        }
-    </style>
     <title>Document</title>
 </head>
 <body>
-    <h1 align="center">CV</h1>
+
+    <div class="header">
+        <img class="logo" src="{{asset('logo/cv_logo.png')}}">
+        <h1 align="center">CV</h1>
+    </div>
+
+
     <h4>Pamatinformācija</h4>
 
-    <div class="main-info">
-{{--        <img src="{{$requestData['imgUrl']}}"/>--}}
-{{--        <img src=""/>--}}
-        <div class="d-flex">
-            <div class="info-alias">
-                <p>Vārds, uzvārds:</p>
-                <p>Dzimšanas datums:</p>
-                <p>E-pasta adrese:</p>
-            </div>
-            <div class="info-data">
-                <p>Ricards Furs</p>
-                <p>06.03.1988</p>
-                <p>epasts@epasts.lv</p>
-            </div>
+    <div class="info-parent">
+        <div class="info-alias">
+            <p>Vārds, uzvārds:</p>
+            <p>Dzimšanas datums:</p>
+            <p>E-pasta adrese:</p>
         </div>
-
+        <div class="info-data">
+            <img class="profile-img" src="{{$requestData['imgUrl']}}"/>
+            <p><strong>{{$requestData['name']}} {{$requestData['surname']}}</strong></p>
+            <p>{{$requestData['birth_date']}}</p>
+            <p><a><span>{{$requestData['email']}}</span></a></p>
+        </div>
     </div>
 
     <h4>Iemaņas un zināšanas</h4>
-    <hr>
 
+    <h5><b>Valodu zināšanas</b></h5>
+    <table>
+        <tr>
+            <th></th>
+            <th>Valoda</th>
+            <th>Runātprasme</th>
+            <th>Lasītprasme</th>
+            <th>Rakstītprasme</th>
+        </tr>
+        @foreach($requestData['lang_name'] as $i => $name)
+            <tr>
+                <td>{{$i + 1}}.</td>
+                <td>{{$name}}</td>
+                <td>{{$requestData['lang_speech'][$i]}}</td>
+                <td>{{$requestData['lang_read'][$i]}}</td>
+                <td>{{$requestData['lang_write'][$i]}}</td>
+            </tr>
+        @endforeach
+    </table>
 
-
-
-
-
-
-
-
-
-{{--<img src="{{$requestData['imgUrl']}}"/>--}}
-{{--{{$requestData['name']}}--}}
+    <h4>Izglītība</h4>
+    @foreach($requestData['edj_name'] as $i => $name)
+        <div class="edu-parent">
+            <div class="edu-alias">
+                <p>Izglītības iestādes nosaukums:</p>
+                <p>Gads no:</p>
+                <p>Gads līdz:</p>
+                <p>Specialitāte:</p>
+            </div>
+            <div class="edu-data">
+                <p><strong>{{$name}}</strong></p>
+                <p>{{$requestData['edj_year_from'][$i]}}</p>
+                <p>{{$requestData['edj_year_to'][$i]}}</p>
+                <p>{{$requestData['edj_spec'][$i]}}</p>
+            </div>
+        </div>
+    @endforeach
 
 </body>
 </html>

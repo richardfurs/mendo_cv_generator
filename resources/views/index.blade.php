@@ -18,7 +18,7 @@
 <body>
 <div class="container">
     <h1>CV Ģenerēšanas Forma</h1>
-    <form id="form"  method="post" id="form" enctype="multipart/form-data">
+    <form id="form" method="post" id="form" enctype="multipart/form-data">
 
         {!! csrf_field() !!}
 
