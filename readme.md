@@ -1,6 +1,6 @@
-#Mendo CV generator
+# Mendo CV generator
 
-###Project installation
+### Project installation
 Clone git repository:
 ```
 $ git clone https://github.com/richardfurs/mendo_cv_generator.git
