@@ -15,8 +15,6 @@ $(document).ready(function () {
         endDate: endYear
     });
 
-
-    // ADD EDUCATION ROW
     $('#add-edj').click(function () {
 
         $('#edj-row').clone().appendTo($('#append-edj')).find('input[type="text"]').val('');
@@ -34,7 +32,6 @@ $(document).ready(function () {
 
     });
 
-    // REMOVE EDUCATION ROW
     $('#remove-edj').click(function () {
         let edjRowArray = $('.edj-row');
         let lastEdjRowElem = edjRowArray[edjRowArray.length - 1];
@@ -46,7 +43,6 @@ $(document).ready(function () {
         }
     });
 
-    // ADD LANGUAGE ROW
     $('#add-lang').click(function () {
         let langRow = $('#lang-row-clone').clone()
         langRow.children(':first').html(
@@ -56,7 +52,6 @@ $(document).ready(function () {
         $('#remove-lang').removeClass('hidden');
     })
 
-    // REMOVE LANGUAGE ROW
     $('#remove-lang').click(function () {
         let langRowArray = $('.lang-row')
         let lastLangRowElem = langRowArray[langRowArray.length - 1]
@@ -68,7 +63,6 @@ $(document).ready(function () {
         }
     })
 
-    // VALIDATE USER DATA
     $('#form').validate({
         rules: {
             name: 'required',
@@ -105,7 +99,6 @@ $(document).ready(function () {
     $('#form').submit(function (e) {
         e.preventDefault()
 
-        // VALIDATE EDUCATION INFO
         let edjInputArr = [
             $('.edj-name'), $('.edj-y-from'), $('.edj-y-to'), $('.edj-spec')
         ]
@@ -129,7 +122,6 @@ $(document).ready(function () {
             })
         })
 
-        // VALIDATE LANGUAGE INFO
         let langInputArr = [
             $('.lang-name'), $('.lang-speech'), $('.lang-read'), $('.lang-write')
         ]
@@ -154,7 +146,6 @@ $(document).ready(function () {
 
         if(returnFunc)return;
 
-        // CREATE REQUEST
         let formData = new FormData(this);
 
         $.ajaxSetup({

@@ -14,11 +14,11 @@ class CreateEducationTable extends Migration
     public function up()
     {
         Schema::create('education', function (Blueprint $table) {
-            $table->increments('edj_id');
-            $table->string('edj_name');
-            $table->integer('edj_from');
-            $table->integer('edj_to');
-            $table->string('edj_spec');
+            $table->increments('id');
+            $table->string('name');
+            $table->integer('year_from');
+            $table->integer('year_to');
+            $table->string('speciality');
             $table->integer('user_id');
             $table->timestamps();
         });
