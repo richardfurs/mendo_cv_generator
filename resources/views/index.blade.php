@@ -39,7 +39,6 @@
             <input name="email" class="form-control" id="email" value="{{ old('name') }}">
         </div>
 
-{{--        IZGLĪTĪBAS IESTĀDES--}}
         <h5 class="text-center">Izglītības iestādes</h5>
 
         <div id="append-edj">
@@ -67,7 +66,6 @@
         <input id="remove-edj" type="button" class=" hidden btn btn-danger btn-block" value="Noņemt Izglītības Iestādi">
 
 
-{{--        VALODU ZINĀŠANAS--}}
         <h5 class="text-center">Valodu zināšanas</h5>
         <div class="row text-center">
             <div class="col-sm">
@@ -85,7 +83,6 @@
         </div>
 
         <div id="lang-append">
-            {{--        ANGĻU VALODA--}}
             <div id="lang-row-clone" class="row text-center lang-row">
                 <div class="col-sm">
                     Angļu
@@ -123,7 +120,6 @@
                 </div>
             </div>
 
-            {{--        LATVIEŠU VALODA--}}
             <div class="row text-center lang-row">
                 <div class="col-sm">
                     Latviešu
@@ -161,7 +157,6 @@
                 </div>
             </div>
 
-            {{--        KRIEVU VALODA--}}
             <div class="row text-center lang-row">
                 <div class="col-sm">
                     Krievu
