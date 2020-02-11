@@ -1,0 +1,97 @@
+body{
+    /*font-family:'Dejavu Sans', Arial, Helvetica, sans-serif;*/
+    font-size: 20px;
+}
+
+h1 {
+    margin: 0;
+}
+
+h4 {
+    margin: 30px 0 20px 0;
+}
+
+h4::after {
+    content: '';
+    display: block;
+    height: 8px;
+    background: lightgray;
+    opacity: 30%;
+}
+
+p {
+    margin: 0;
+}
+
+.info-parent {
+    position: relative;
+    max-width: 100%;
+}
+
+.info-alias {
+    text-align: end;
+    max-width: 20%;
+    bottom: 0;
+    right: 71%;
+    position: absolute;
+}
+
+.info-data {
+    margin-left: 30%;
+}
+
+.profile-img {
+    max-width: 200px;
+    max-height: 300px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 50px;
+}
+
+table, th, td {
+    border: 1px solid #e1e1e1;
+}
+
+th {
+    background: #c7c7c7;
+}
+
+.edu-parent {
+    position: relative;
+    margin-bottom: 40px;
+}
+
+.edu-alias {
+    text-align: end;
+    max-width: 29%;
+}
+
+.edu-data {
+    position: absolute;
+    bottom: 0;
+    left: 30%;
+}
+
+strong {
+    font-size: 25px;
+}
+
+.header {
+    position: relative;
+    padding: 15px 0 15px 0;
+}
+
+.logo {
+    max-width: 200px;
+    max-height: 70px;
+    position: absolute;
+    top: 50%;
+    margin-top: -35px;
+}
+a span{
+    color: blue;
+    text-decoration: underline;
+}
